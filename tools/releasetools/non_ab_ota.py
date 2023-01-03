@@ -221,6 +221,33 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
 
+  # Build info
+
+  script.Print("    ____        __           _              ____  _____");
+  script.Print("   / __ \____ _/ /_  _______(_)___ ___     / __ \/ ___/");
+  script.Print("  / /_/ / __ `/ / / / / ___/ / __ `__ \   / / / /\__ \ ");
+  script.Print(" / ____/ /_/ / / /_/ / /  / / / / / / /  / /_/ /___/ / ");
+  script.Print("/_/    \__,_/_/\__, /_/  /_/_/ /_/ /_/   \____//____/  ");
+  script.Print("              /____/                                   ");
+
+
+  buildid = target_info.GetBuildProp("ro.modversion")
+  androidver = target_info.GetBuildProp("ro.palyrim.build.version")
+  buildday = target_info.GetBuildProp("ro.build.date")
+  securep = target_info.GetBuildProp("ro.build.version.security_patch")
+  device = target_info.GetBuildProp("ro.build.product")
+  manufacturer = target_info.GetBuildProp("ro.product.manufacturer")
+  script.Print("***********************************************");
+  script.Print(" ROM version      : %s"%(buildid));
+  script.Print(" Android version  : %s"%(androidver));
+  script.Print(" Security patch   : %s"%(securep));
+  script.Print(" Build date       : %s"%(buildday));
+  script.Print("***********************************************");
+  script.Print(" Device           : %s"%(device));
+  script.Print(" Manufacturer     : %s"%(manufacturer));
+  script.Print("***********************************************");
+  script.Print("                                               ");
+
   device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
